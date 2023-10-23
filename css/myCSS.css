@@ -1,0 +1,553 @@
+:root {
+  --first-color : #FFA775;
+  --first-color-lightened : hsl(22, 100.00%, 82.90%);
+  --first-color-darkened : hsl(22, 100.00%, 62.90%);
+
+  --second-color : #A998AD ;
+  --second-color-lightened : hsl(287, 10.80%, 83.70%);
+  --second-color-darkened : hsl(289, 13.50%, 52.00%);
+  
+  --third-color : #BABCBD;
+  --third-color-lightened : hsl(200, 2.20%, 83.50%);
+  --third-color-darkened : hsl(200, 2.20%, 63.50%);
+  
+  --fourth-color : #FEC430;
+  --fourth-color-lightened : hsl(43, 99.00%, 69.20%);
+  --fourth-color-darkened : hsl(43, 99.00%, 49.20%);
+
+  --neutral-color-1 : #f3efea;
+  --neutral-color-2 : #262828;
+  --neutral-color-1-rgb : 243, 239, 234;
+  --neutral-color-2-rgb : 38,40,40;
+
+  --color-error-message : #CC0000;
+}
+
+/* Style for the custom scrollbar */
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+/* The long round object, or thumb, of the scrollbar */
+::-webkit-scrollbar-thumb {
+  background-color: var(--first-color);
+  border-radius: 20px;
+  max-height: 40%;
+}
+
+/* On hover, change the color of the thumb */
+::-webkit-scrollbar-thumb:hover {
+  background-color: var(--first-color); /* Yellow (a different shade) */
+}
+
+
+body {
+  font-family: "Poppins", sans-serif;
+  font-weight: normal;
+  background-color: var(--neutral-color-1);
+  color : var(--neutral-color-2) ;
+  text-align: center;
+  user-select: none;
+}
+
+table {
+  border-collapse: collapse;
+  width: 100%;
+}
+
+th, td {
+  height : 60px;
+  padding: 8px;
+  text-align: left;
+  word-wrap: break-word;
+  max-width: 200px;
+}
+
+th {
+  color : var(--neutral-color-2);
+}
+
+thead { 
+  border-radius : 12px;
+}
+
+tr:has(td){
+  border-radius: 30px;
+}
+
+td {
+  max-width: 200px; /* Optional: set the maximum width of each column */
+  border-top: 1px solid rgba(2, 49, 93, .3); /* Border color with opacity 0.5 for bottom */
+  border-bottom: 1px solid rgba(2, 49, 93, .3); /* Border color with opacity 0.5 for bottom */
+}
+
+
+h6 {
+  font-family: "Open Sans", sans-serif;
+  font-weight: normal;
+  text-align: justify;
+  max-width : 512px;
+}
+
+.my-nav-bar{
+  /* background-color: #7F5283;  */
+  height: 100px;
+  /* box-shadow: 0px 2px 10px 0px rgba(0, 0, 0, 0.3); */
+}
+
+.drop-area {
+  border-radius: 8px;
+  border: 2px dashed rgba(38,40,40, 0.2);
+  height : 100%; 
+  width: 100%;
+}
+
+.drop-area.active {
+  border: 2px dashed rgba(145, 123, 150, 1); !important;
+  background: var(--second-color-lightened)
+}
+
+.my-button {
+  background-color: var(--first-color);
+  cursor: pointer;
+  border: none;
+  transition: background-color 0s;
+}
+
+.my-button:hover, .my-button:active{
+  background-color: var(--first-color-darkened); !important;
+  border : none;
+  box-shadow : none;
+}
+
+.my-button:focus{
+  border : none;
+  box-shadow : none;
+}
+
+.link-browse {
+  color: var(--second-color-darkened) !important;
+  cursor: pointer ;
+  border: none !important;
+  transition: color 2s ease;
+  text-decoration: none !important;
+  font-weight : 600;
+}
+
+.link-browse:hover {
+  opacity : .8 !important;
+  text-decoration: none !important;
+}
+
+.link-default{
+  color: blue !important;
+  cursor: pointer ;
+  border: none !important;
+  transition: color 2s ease;
+  text-decoration: none !important;
+  font-weight : 600;
+}
+
+.link-default:hover{
+  opacity : .8 !important;
+  text-decoration: underline !important;
+}
+
+
+.ods-nav-link {
+  font-weight : bold;
+  font-size : 32px;
+}
+
+.my-nav-link {
+  color : var(--neutral-color-2);
+  cursor: pointer;
+  border: none;
+  transition: color 0.5s ease;
+}
+
+.my-nav-link:hover {
+  color: var(--first-color-lightened) !important;
+  text-decoration: none;
+}
+
+.my-nav-link.disable {
+  cursor: default;
+  pointer-events: none;
+  color: var(--first-color);
+}
+
+
+.hidden {
+  display : none !important;
+}
+
+
+.button-profile {
+  background : var(--first-color-darkened);
+  color : var(--neutral-color-1);
+  width : auto;
+  border : 0;
+}
+
+.button-profile:hover {
+  background : var(--first-color) ;
+  color : var(--neutral-color-1);
+  border : 0;
+}
+
+.button-profile:active,
+.button-profile:focus{
+  background : var(--first-color-darkened) ;
+  color : var(--neutral-color-1);
+  border : 0;
+}
+.pop-up {
+  transition: opacity 1s ease, transform 1s ease;
+  animation : popUp 2s;
+}
+
+@keyframes popUp{
+  0% {
+    opacity: 0;
+    transform: translate(-50%, -50%) translateY(-20px);
+  }
+  100% {
+    opacity: 1;
+    transform: translate(-50%, -50%);
+  }
+}
+
+.data {
+  border-radius: 8px; 
+  border: 1px solid rgba(32, 34, 43, 0.15); 
+  color: #3E3D43;
+  cursor : pointer;
+  transition: transform 0.1s ease;
+}
+
+.data:hover {
+  transform: scale(1.05);
+  background-color : var(--first-color-lightened);
+}
+
+
+
+.form-control:focus{
+  outline : none;
+  box-shadow : none;
+}
+
+
+.error-message {
+  font-size: 11px;
+  color: var(--color-error-message);
+  font-weight: normal;
+  opacity: 1;
+  scale: 1;
+}
+
+.pulse-animation {
+  animation: pulse 0.3s ease-in-out;
+}
+
+@keyframes pulse {
+  0% {
+    opacity: 1;
+  }
+  50% {
+    scale : 1.05;
+    font-weight: normal;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+.trash-logo{
+  width: 25px; 
+  cursor: pointer;
+}
+
+.form-select-container label{
+  font-size : small;
+  opacity : .5;
+}
+
+.form-select {
+  background : none;
+  border : 1;
+  border-radius : 10px;
+  border: 1px solid rgba(38,40,40, 0.2);
+  cursor : pointer;
+  transition : color 0.1 ease;
+}
+
+.form-select:hover {
+  background : var(--third-color-lightened); 
+}
+
+
+.form-select:focus{
+  background : var(--third-color-lightened);
+  border: 1px solid rgba(38,40,40, 0.2);
+  box-shadow : none;
+  shadow : none;
+}
+
+#file-name {
+  font-size : 64px;
+  font-weight : 500;
+}
+
+#database-partition-option p:nth-child(n+2){
+  text-align : left;
+  font-size : 18px;
+  opacity : .4;
+}
+
+#upload-file-button{
+  display : inline-block;
+  opacity : .2;
+  text-align : center;
+  font-size : 24px !important;
+  pointer-events : none;
+  font-weight : 600;
+  scale: 0.9;
+  transition : all 0.2s ease;
+}
+
+#upload-file-button.active {
+  opacity : 1 !important;
+  text-align : center !important;
+  font-size : 24px !important;
+  cursor : pointer !important;
+  pointer-events : auto !important;
+  font-weight : 600 !important;
+}
+
+.database-partition-button {
+  width : 100%;
+  border : none;
+  border-radius : 12px;
+  height : 60px;
+  font-size : 24px;
+  font-weight : 600;
+  transition: all 0.2s ease;
+}
+
+.database-partition-button.clicked {
+  transform : scale(1.01);
+  box-shadow: 1px 1px 4px 0px rgba(38, 40, 40, 1);
+  filter: brightness(1.1);
+}
+
+
+.database-partition-button.first-color{
+  background : var(--first-color);
+}
+
+.database-partition-button.second-color{
+  background : var(--second-color);
+}
+
+.database-partition-button.third-color{
+  background : var(--third-color);
+}
+
+.database-partition-button.fourth-color{
+  background : var(--fourth-color);
+}
+
+tbody tr:nth-child(even){
+  background : rgba(var(--neutral-color-2-rgb), 0.01);
+}
+
+tbody tr:nth-child(odd){
+  background : 
+}
+
+#login > form p:last-child{
+  color : rgba(var(--neutral-color-2-rgba), 1);
+  font-size : small;
+}
+
+.form-ver-1{
+  width: 100%; 
+  border-radius: 6px;
+  background : none;
+  border : 0;
+  border-bottom: 1.5px solid #ccc;
+  border-radius: 0px;
+  transition : all 0.1 ease;
+}
+
+.form-ver-1:hover, .form-ver-1:focus{
+  background : rgba(var(--neutral-color-2-rgb), .02);
+  border-bottom: 1.5px solid #ccc;
+}
+
+.form-ver-1:-webkit-autofill{
+  -webkit-box-shadow: 0 0 0 1000px var(--neutral-color-1) inset !important;
+  background : transparent !important;
+  border-bottom: 1.5px solid #ccc;
+}
+
+.form-ver-2 {
+  background-color : var(--third-color-lightened);
+  width:33%; 
+  border-radius: 15px; 
+  height: 50px;
+  border : 1px solid #ccc;
+}
+
+.form-ver-2:hover {
+  background-color : var(--neutral-color-1);
+  border : 1px solid #ccc;
+}
+
+.form-ver-2:focus {
+  background-color : white;
+  border : 1px solid #ccc;
+}
+
+.container-new-note{
+  display: flex;
+  align-items: flex-start;
+  margin : 32px;
+  width : 100%;
+  height : 100%;
+}
+
+.container-new-note div:first-child{
+  height : 10%;
+}
+
+.container-new-note div:nth-child(2){
+  height : 80%;
+}
+
+.container-new-note div:first-child textarea,
+.container-new-note div:nth-child(2) textarea{
+  max-width : 100%;
+  height: 100%; 
+  resize: none;
+  border : 1px solid rgb(var(--neutral-color-2));
+}
+
+
+.container-new-note div:last-child{
+  height : 10%;
+}
+
+.container-new-note div:last-child > img{
+  display : inline-block;
+  cursor : pointer;
+  transition : all 0.1s ease;
+}
+
+.container-new-note div:last-child > img:hover{
+  scale : 1.1;
+  filter : brightness(1.1);
+}
+
+.container-switch-log{
+  background-color : var(--second-color-lightened);
+  height : 36px;
+  width : 169px;
+  border-radius : 40px;
+  display : flex;
+  border : 2px solid rgba(var(--neutral-color-2-rgb),.2);
+  pointer-events : auto;
+  cursor : pointer;
+}
+
+.container-switch-log > div{
+  font-size : 16px;
+  height : 100%;
+  border-radius : 40px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.selected {
+  animation-name: switchColor;
+  animation-duration: 0.2s;
+  animation-fill-mode: forwards;
+}
+
+@keyframes switchColor {
+  0% {
+    background-color: var(--second-color-lightened);
+  }
+  100% {
+    color: var(--neutral-color-1);
+    background-color: var(--second-color-darkened);
+  }
+}
+
+#notes-log {
+  width : 100%;
+  height : 100%;
+}
+
+.note-card-container {
+  position : relative;
+  background-color : rgba(var(--neutral-color-2-rgb),.02);
+  height: auto;
+  width : 100%;
+  border-radius : 12px;
+  text-align : left;
+  padding : 16px;
+}
+
+.note-desciption{
+  border-bottom : 2px solid rgba(var(--neutral-color-2-rgb),.2)
+}
+
+.note-card-container div:not(:last-child){
+  margin-bottom : 24px;
+}
+
+.note-card-container div p{
+  font-size : medium;
+  opacity : .4;
+  margin-bottom : 0px;
+}
+
+.note-card-container div h5{
+  font-weight : 400;
+  background: none;
+  overflow: hidden;
+  width : 100%;
+  max-width: 100%;
+  height: auto;
+  resize : none;
+  border : 0;
+}
+
+#ods-view button {
+  background : var(--second-color-darkened);
+  color : var(--neutral-color-1);
+  width : 225px;
+  height : 48px;
+  border-radius : 16px;
+  border-radius : 64px;
+  border : none;
+  transition : all 0.1s ease;
+}
+
+#ods-view button:hover {
+  background : var(--second-color);
+  scale : 1.01;
+}
+
+@keyframes moveUpDown {
+  0%, 100% {
+    transform: translateY(0); /* Element starts and ends at the original position */
+  }
+  50% {
+    transform: translateY(10px); /* Element moves down 50 pixels at the midpoint of the animation */
+  }
+}

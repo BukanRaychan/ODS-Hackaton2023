@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ODS</title>
+    <link rel="shortcut icon" href="img/logo_header.png" type="img/png" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
+    <link rel="stylesheet" href="css/myCSS.css" />
+</head>
+
+
+<body class="overflow-y-auto overflow-x-hidden">
+    <!-- NAVBAR  -->
+    <div class="container-fluid mb-3 px-5 sticky-top my-nav-bar">
+        <div class="container d-flex align-items-center justify-content-between position-relative"
+            style="height: 100%;">
+
+            <h3 id="ods" class="my-0 font-weight-bold my-nav-link toogle ods-nav-link ods">ODS</h3>
+
+            <div class="d-flex align-items-center mx-4 w-100">
+                <!-- <ul class="nav d-block d-xl-none" >
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle my-nav-link toggle" href="#" id="navbarDropdown" role="button"
+                            data-bs-toggle="dropdown" aria-expanded="false">
+                            Menu
+                        </a>
+                        <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                            <li><a id="upload" class="dropdown-item my-nav-link toggle upload">Upload Data</a></li>
+                            <li><a id="get" class="dropdown-item my-nav-link toggle get">Collect Data</a></li>
+                            <li><a id="transaction" class=" dropdown-item my-nav-link toggle transaction">Transaction Log</a></li>
+                            <li><a id="query" class="dropdown-item my-nav-link toggle query">Query</a></li>
+                        </ul>
+                    </li>
+                </ul> -->
+                <ul class="nav d-none d-xl-block d-xl-flex">
+                    <li class="nav-item">
+                        <a id="upload" class="nav-link my-nav-link toggle upload">Upload</a>
+                    </li>
+                    <li class="nav-item">
+                        <a id="get" class="nav-link my-nav-link toggle get">Collect</a>
+                    </li>
+                    <li class="nav-item">
+                        <a id="transaction" class="nav-link my-nav-link toggle transaction">Log</a>
+                    </li>
+                    <li class="nav-item">
+                        <a id="query" class="nav-link my-nav-link toggle query">Query</a>
+                    </li>
+                </ul>
+            </div>
+
+            <!-- PROFILE -->
+            <div id="profile" class="w-100">
+                <div id="dropdownProfile" class="dropdown">
+                    <button type="button" class="btn dropdown-toggle float-end button-profile" data-bs-toggle="dropdown"
+                        aria-expanded="false" data-bs-auto-close="outside">
+                        <span id="thumbnail-name"></span>
+                        <span id="thumbnail-name-clicked" class="hidden">Your Profile</span>
+                    </button>
+                    <form class="dropdown-menu p-4 w-75" style="z-index: 9999;">
+                        <div class="mb-3">
+                            <label class="form-label">Name</label>
+                            <input id="name" type="text" class="form-control form-profile"
+                                id="exampleDropdownFormEmail2" placeholder="Name" value="_Name_" disabled>
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label">Email address</label>
+                            <input id="email" type="email" class="form-control form-profile"
+                                id="exampleDropdownFormEmail2" placeholder="email@example.com" value="_Email_" disabled>
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label">Password</label>
+                            <input id="password" type="password" class="form-control form-profile"
+                                id="exampleDropdownFormPassword2" placeholder="Password" value="_password_" disabled>
+                        </div>
+                        <div>
+                            <button id="edit-profile" type="button" class="btn btn-outline-primary">Edit
+                                Profile</button>
+                            <a id="logout" class="btn btn-outline-danger ms-3" href="landingPage.html">Log Out</a>
+                            <button id="edit" type="button" class="btn btn-outline-primary hidden">Edit</button>
+                            <button id="cancel" type="button"
+                                class="btn btn-outline-primary ms-3 hidden">Cancel</button>
+                            <img id="delete-account" src="img/trash.png" class="my-1 float-end trash-logo">
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- UPLOAD -->
+    <div id="upload-view" class="hidden">
+        <div class="container" style="height: 75vh;">
+            <div class="container-fluid d-flex justify-content-center align-items-center mx-0 flex-column drop-area">
+                <!-- DEFAULT -->
+                <div id="default" style="pointer-events: auto; display: block;">
+                    <div class="d-flex align-items-center flex-column">
+                        <div class="d-flex align-items-center flex-column" style="font-weight: normal;">
+                            <img src="img/file.png" style="width: 128px;">
+                            <div style="font-size: x-large; font-weight: 600;">
+                                <span class="button font-weight-bold link-browse"style="pointer-events: auto;">
+                                    Browse 
+                                </span> a 
+                                <span id="file-format-text">.csv</span> 
+                                file to upload
+                            </div>
+                            <input id="browse-input" type="file" accept=".csv" hidden>
+                            <div>or drag & drop your file here</div>
+                            <div class="form-select-container mt-3 d-flex flex-column align-items-center" style="min-width: 60%;">
+                                <label>Select Format File or <span id = "create-note-button" class="link-default">Create new Notes</span> </label>
+                                <select id = "file-format-selector" class="form-select w-75">
+                                    <option value=".csv">CSV</option>
+                                    <option value=".jpg">JPG</option>
+                                    <option value=".txt">TXT</option>
+                                </select>
+                            </div>
+
+                            <p></p>
+                        </div>
+                    </div>
+                </div>
+        
+                <!-- FILE HOVERING -->
+                <div id="hover" style="display: none; pointer-events: none">
+                    <h1 style="opacity : 0.3;">Drop top upload</h1>
+                </div>
+
+                <!-- CREATE NEW NOTE -->
+                <div id="create-new-note" class="container container-new-note flex-column" style="pointer-events: auto; display: none;">
+                    <div class="form-floating mb-3">
+                        <textarea class="form-control" data-gramm="false" placeholder="Leave a comment here" id="new-date-text"></textarea>
+                        <label for="floatingTextarea2">Enter date | format : dd mmmmm YYYY</label>
+                    </div>
+                    <div class="form-floating">
+                        <textarea class="form-control"data-gramm="false" placeholder="Leave a comment here" id="new-note-text"></textarea>
+                        <label for="floatingTextarea2">Enter your notes here</label>
+                    </div>
+                    <div class="d-flex align align-items-center justify-content-between p-2">
+                        <img id = "cancel-new-note" src="/img/cancel.png" class="" style="width: 18px; aspect-ratio: 1/1 ;">
+                        <img id = "send-new-note" src="/img/send.png" class="" style="width: 24px; aspect-ratio: 1/1 ;">
+                    </div>
+                </div>
+
+                <!-- DATABASE PARTITION OPTION -->
+                <div id="database-partition-option" class="p-5" style="display: none; width: 100%;">
+                    <p id = "file-name" class="mb-4">__Name_Of_The_File__</p>
+                    <p>Select 2 or More Databases :</p>
+                    <div class="container-fluid p-0 d-flex justify-content-between gap-3 mb-4">
+                        <button class="database database-partition-button first-color">TiDB</button>
+                        <button class="database database-partition-button second-color">MongoDB</button>
+                        <button class="database database-partition-button third-color">Redis</button>
+                    </div>
+
+                    <p>Select partition:</p>
+                    <div class="container-fluid p-0 d-flex justify-content-between gap-3 mb-5">
+                        <button class="partition database-partition-button fourth-color">Horizontal</button>
+                        <button class="partition database-partition-button fourth-color">Vertical</button>
+                    </div>
+
+                    <p id = "upload-file-button">Upload File</p>
+                </div>
+
+                <!-- UPLOADED -->
+                <div id="uploaded" style="display: none;">
+                    <h1>File Uploaded</h1>
+                </div>
+            </div>
+            <!-- <div class="container">
+                <div class="row row-cols-sm-1 row-cols-lg-3" style="height: 30vh; color: #323A3D" >
+                    <div class="d-flex align-items-center flex-column pt-1 px-5">
+                        <h2>TiDB</h2>
+                        <h6>A distributed and horizontally scalable relational database. Combines the advantages of
+                            relational databases and horizontal scaling. Supports ACID consistency and transactional
+                            operations at a large scale.</h6>
+                    </div>
+                    <div class="d-flex align-items-center flex-column pt-1 px-5">
+                        <h2>Redis</h2>
+                        <h6>An open-source database focused on high performance. Uses in-memory data structures and
+                            suitable for caching and message management. Supports various data models and features
+                            replication and scalability.</h6>
+                    </div>
+                    <div class="d-flex align-items-center flex-column pt-1 px-5">
+                        <h2>MongoDB</h2>
+                        <h6>A NoSQL document database that stores data in JSON-like format. Flexible and suitable for
+                            complex data. Supports replication and automated sharding for high availability and
+                            scalability.</h6>
+                    </div>
+                </div>
+            </div> -->
+        </div>
+    </div>
+
+    <!-- GET -->
+    <div id="get-view" class="hidden">
+        <div class="container d-flex flex-column" style="height: 80vh;">
+            <input type="text" class="form-control mb-4 grip form-ver-2" placeholder="Search"
+                oninput="handleSearch()">
+            <div id="data-container" class="container-fluid position-relative overflow-auto"
+                style="height: 100%; border-top: 1.5px solid rgba(62, 61, 67, 1)">
+            </div>
+        </div>
+    </div>
+
+    <!-- TRANSACTION -->
+    <div id="transaction-view" class="hidden">
+        <div class="container">
+            <div class="container-switch-log d-flex align-items-center row row-cols-2">
+                <div class="selected">Files</div>
+                <div>Notes</div>
+            </div>
+        </div>
+        <div class="container d-flex flex-column overflow-y-auto" style="height: 75vh;">
+            <!-- FILES LOG -->
+            <div id="files-log" class=""> 
+                <table style="text-align: left;">
+                    <thead class="sticky-top" style="z-index: 0;">
+                        <tr>
+                            <th style="width: 5%;">No</th>
+                            <th style="width: 20%;">Transaction id</th>
+                            <th style="width: 10%;">Partition</th>
+                            <th style="width: 10%;">Sharding Key</th>
+                            <th style="width: 20%;">Database</th>
+                            <th style="width: 27%;">File</th>
+                            <th style="width: 3%;"></th>
+                        </tr>
+                    </thead>
+                    <tbody id="transaction-data">
+                    </tbody>
+                </table>
+                </table>
+            </div>
+
+            <!-- NOTES LOG-->
+            <div id = "notes-log" class="mt-3 overflow-y-auto hidden">     
+            </div>
+        </div>
+    </div>
+
+    <!-- QUERY -->
+    <div id="query-view" class="hidden">
+        <div class="container overflow-hidden  d-flex flex-column" style="height: 80vh;">
+            <input id="search-data-query" type="text" class="form-control mb-4 grip form-ver-2 w-100"
+                placeholder="Put your text in here">
+            <div id="query-result" class="container-fluid border border-1 p-3 overflow-y-auto"
+                style="height: 100%; text-align: left; user-select: text;">
+            </div>
+        </div>
+    </div>
+    </div>
+
+    <!-- ODS -->
+    <div id="ods-view" class="hidden">
+        <div class="container d-flex row-cols-2" style="height: 75vh;  text-align: left;">
+            <div class="justify-content-center d-flex flex-column">
+                <h1 class="mb-3" style="font-weight: 600;"> On-Demand <br> Data Sharding</h1>
+                <div class="float-start mb-4">
+                    <h6 style="font-weight: lighter;">This project serves as the backend component of our software,
+                        specifically focused on implementing sharding techniques. By utilizing sharding, we aim to partition
+                        and distribute data across multiple databases, ensuring efficient storage, retrieval, and management
+                        of data while maintaining a predefined schema for seamless integration with the overall software
+                        architecture.
+                    </h6>
+                </div>
+                <button>
+                    Get Started
+                </button>
+            </div>
+            <div class="justify-content-center align-items-center d-flex flex-column position-relative">
+                <img src="img/ODS_TEXT.png" class="position-absolute" style="width: 400px; z-index: 1; top: 0px; left: 75px; animation: moveUpDown 4s ease-in-out infinite;">
+                <img src="img/ODS_IMG.png" class="position-absolute" style="width: 750px; z-index: 0; bottom: 20px;">
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz"
+        crossorigin="anonymous"></script>
+
+    <script src="js/uploadFunction.js"></script>
+    <script src="js/getFunction.js"></script>
+    <script src="js/transactionFunction.js"></script>
+    <script src="js/profileFunction.js"> </script>
+    <script src="js/QueryFunction.js"> </script>
+    <script src="js/navigator.js"></script>
+    <!-- <script src="js/userSession.js"></script> -->
+</body>
+
+</html>
